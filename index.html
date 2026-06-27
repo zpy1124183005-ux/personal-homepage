@@ -1,0 +1,2488 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>张鹏宇 · 保研个人展示 | 河北大学旅游管理</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* ========== Reset & Base ========== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --green-deep: #1e3a2f;
+  --green: #2d5a44;
+  --green-light: #5a8a6e;
+  --sage: #8baa96;
+  --gold: #c9a961;
+  --gold-light: #e0c887;
+  --cream: #faf7f0;
+  --cream-dark: #f0ebe0;
+  --charcoal: #1a1a1a;
+  --gray: #5a5a5a;
+  --gray-light: #9a9a9a;
+  --white: #ffffff;
+  --serif: 'Noto Serif SC', 'Cormorant Garamond', serif;
+  --sans: 'Noto Sans SC', sans-serif;
+  --max-width: 1100px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== Scroll Progress ========== */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 3px;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  z-index: 1000;
+  transition: width 0.1s ease;
+}
+
+/* ========== Navigation ========== */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 1.2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.4s ease;
+}
+nav.scrolled {
+  background: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 20px rgba(0,0,0,0.06);
+  padding: 0.8rem 2rem;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 2px;
+  transition: color 0.4s;
+}
+nav.scrolled .nav-logo { color: var(--green-deep); }
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  text-decoration: none;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.85);
+  font-weight: 400;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  position: relative;
+}
+nav.scrolled .nav-links a { color: var(--gray); }
+.nav-links a:hover { color: var(--gold); }
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  width: 0; height: 1.5px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+.nav-links a:hover::after { width: 100%; }
+
+/* ========== Hero ========== */
+.hero {
+  height: 100vh;
+  min-height: 680px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url('hero-village.jpg') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 20s ease-in-out infinite alternate;
+}
+@keyframes heroZoom {
+  from { transform: scale(1.05); }
+  to { transform: scale(1.15); }
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(30,58,47,0.5) 0%, rgba(30,58,47,0.3) 40%, rgba(30,58,47,0.75) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: var(--white);
+  padding: 0 2rem;
+  max-width: 800px;
+}
+.hero-tagline-top {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  letter-spacing: 6px;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s forwards;
+}
+.hero-name {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: 8px;
+  line-height: 1.1;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.5s forwards;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+}
+.hero-name-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  letter-spacing: 4px;
+  color: var(--sage);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s forwards;
+}
+.hero-poem {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  letter-spacing: 3px;
+  color: rgba(255,255,255,0.9);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+.hero-poem span { color: var(--gold-light); }
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 1s 1.1s forwards;
+}
+.hero-stat {
+  padding: 0 1.8rem;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  text-align: center;
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+.hero-stat-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 0.2rem;
+}
+.scroll-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-size: 0.75rem;
+  letter-spacing: 3px;
+  animation: bounce 2s infinite;
+}
+.scroll-hint::after {
+  content: '';
+  display: block;
+  width: 1px;
+  height: 30px;
+  background: rgba(255,255,255,0.3);
+  margin: 0.5rem auto 0;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== Section Common ========== */
+section {
+  padding: 7rem 2rem;
+  position: relative;
+}
+.container { max-width: var(--max-width); margin: 0 auto; }
+.section-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--gold);
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+.section-divider {
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+  margin-bottom: 3rem;
+}
+
+/* ========== About ========== */
+#about { background: var(--cream); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.about-text p {
+  font-size: 1.05rem;
+  color: var(--gray);
+  margin-bottom: 1.2rem;
+  line-height: 1.9;
+}
+.about-text .highlight {
+  color: var(--green);
+  font-weight: 500;
+}
+.about-quote {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--green-deep);
+  border-left: 3px solid var(--gold);
+  padding-left: 1.5rem;
+  margin-top: 2rem;
+  line-height: 1.8;
+  font-style: italic;
+}
+.about-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-top: 2rem;
+}
+.trait-tag {
+  padding: 0.4rem 1.2rem;
+  background: var(--cream-dark);
+  border-radius: 30px;
+  font-size: 0.85rem;
+  color: var(--green);
+  letter-spacing: 1px;
+  border: 1px solid rgba(45,90,68,0.1);
+}
+.about-english {
+  display: flex;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  padding: 1.2rem;
+  background: var(--cream);
+  border-radius: 6px;
+  border-left: 3px solid var(--gold);
+  align-items: center;
+}
+.about-english-img {
+  width: 120px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.about-english-img:hover { transform: scale(1.03); }
+.about-english-img img {
+  width: 100%;
+  display: block;
+}
+.about-english-text {
+  flex: 1;
+  font-size: 0.85rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+.about-english-text strong {
+  color: var(--green-deep);
+  font-weight: 500;
+}
+.about-card {
+  background: var(--white);
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 10px 50px rgba(30,58,47,0.08);
+}
+.about-card-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+}
+.about-card-row:last-child { border-bottom: none; }
+.about-card-label {
+  font-size: 0.85rem;
+  color: var(--gray-light);
+  letter-spacing: 1px;
+}
+.about-card-value {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+
+/* ========== Academic ========== */
+#academic { background: var(--white); }
+.academic-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+.academic-card {
+  text-align: center;
+  padding: 2.5rem 1.5rem;
+  background: var(--cream);
+  border-radius: 4px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.academic-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(30,58,47,0.1);
+}
+.academic-card-num {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+.academic-card-unit {
+  font-size: 1rem;
+  color: var(--gold);
+  margin-left: 0.3rem;
+}
+.academic-card-label {
+  font-size: 0.9rem;
+  color: var(--gray);
+  margin-top: 0.8rem;
+  letter-spacing: 1px;
+}
+.academic-card-sub {
+  font-size: 0.78rem;
+  color: var(--gray-light);
+  margin-top: 0.3rem;
+}
+.courses-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+.courses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.course-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1.2rem;
+  background: var(--cream);
+  border-radius: 4px;
+  border-left: 3px solid var(--gold);
+  transition: transform 0.2s;
+}
+.course-item:hover { transform: translateX(5px); }
+.course-name { font-size: 0.9rem; color: var(--charcoal); }
+.course-score {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--green);
+  font-size: 1.05rem;
+}
+.scholarships-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.scholarship-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--cream-dark);
+}
+.scholarship-icon {
+  width: 36px; height: 36px;
+  background: var(--green);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.scholarship-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+.scholarship-note {
+  font-size: 0.8rem;
+  color: var(--gold);
+  margin-top: 0.2rem;
+}
+.position-section {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--cream-dark);
+}
+.position-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.position-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1.2rem;
+  background: var(--cream);
+  border-radius: 4px;
+  border-left: 3px solid var(--green);
+  transition: transform 0.2s;
+}
+.position-item:hover { transform: translateX(5px); }
+.position-icon {
+  width: 24px; height: 24px;
+  background: var(--green);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+.position-name {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  color: var(--charcoal);
+}
+
+/* ========== Research ========== */
+#research { background: var(--cream); }
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--gold), var(--sage));
+}
+.timeline-item {
+  position: relative;
+  padding-bottom: 3rem;
+  padding-left: 2.5rem;
+}
+.timeline-item:last-child { padding-bottom: 0; }
+.timeline-dot {
+  position: absolute;
+  left: -1px; top: 0.3rem;
+  width: 16px; height: 16px;
+  background: var(--cream);
+  border: 3px solid var(--gold);
+  border-radius: 50%;
+  z-index: 1;
+}
+.timeline-item.highlight .timeline-dot {
+  background: var(--gold);
+  border-color: var(--green);
+  box-shadow: 0 0 0 5px rgba(201,169,97,0.2);
+}
+.timeline-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.8rem;
+  background: var(--green);
+  color: var(--cream);
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+.timeline-item.highlight .timeline-tag {
+  background: var(--gold);
+  color: var(--white);
+}
+.timeline-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.timeline-role {
+  font-size: 0.82rem;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+.timeline-achievements {
+  margin-top: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.achievement-tag {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.8rem;
+  background: var(--cream-dark);
+  border-radius: 3px;
+  color: var(--green);
+}
+
+/* Research sub-sections */
+.research-part {
+  margin-bottom: 3.5rem;
+}
+.research-part:last-child { margin-bottom: 0; }
+.research-part-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.8rem;
+}
+.research-part-num {
+  width: 32px; height: 32px;
+  background: var(--green-deep);
+  color: var(--gold-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+.research-part-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.research-part-count {
+  font-size: 0.75rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.research-part-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+.conference-item {
+  display: flex;
+  gap: 1.2rem;
+  padding: 1rem 1.5rem;
+  background: var(--cream);
+  border-radius: 6px;
+  border-left: 3px solid var(--sage);
+  margin-bottom: 0.8rem;
+  transition: transform 0.2s;
+}
+.conference-item:hover { transform: translateX(5px); }
+.conference-date {
+  font-family: var(--serif);
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 5rem;
+}
+.conference-text {
+  font-size: 0.88rem;
+  color: var(--gray);
+  line-height: 1.7;
+}
+.conference-text strong {
+  color: var(--green-deep);
+  font-weight: 500;
+}
+
+/* ========== Works / Publications ========== */
+#works { background: var(--white); }
+.works-intro {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 3rem;
+  max-width: 600px;
+  line-height: 1.8;
+}
+.works-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+.work-card {
+  display: flex;
+  gap: 1.8rem;
+  padding: 2rem;
+  background: var(--cream);
+  border-radius: 4px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  border: 1px solid rgba(45,90,68,0.06);
+}
+.work-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 45px rgba(30,58,47,0.1);
+}
+.work-cover {
+  flex-shrink: 0;
+  width: 120px;
+  height: 170px;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(30,58,47,0.2);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.work-cover:hover { transform: scale(1.04); }
+.work-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.work-cover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(30,58,47,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.work-cover:hover .work-cover-overlay { opacity: 1; }
+.work-cover-overlay span {
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  border: 1px solid var(--gold-light);
+  padding: 0.3rem 0.8rem;
+  border-radius: 3px;
+}
+.work-info { flex: 1; display: flex; flex-direction: column; }
+.work-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.7rem;
+  background: var(--green);
+  color: var(--cream);
+  border-radius: 3px;
+  letter-spacing: 1px;
+  margin-bottom: 0.6rem;
+  align-self: flex-start;
+}
+.work-tag.report { background: var(--gold); color: var(--white); }
+.work-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+.work-meta {
+  font-size: 0.78rem;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+.work-abstract {
+  font-size: 0.82rem;
+  color: var(--gray);
+  line-height: 1.7;
+  margin-bottom: 0.8rem;
+  flex: 1;
+}
+.work-links {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: auto;
+}
+.work-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  padding: 0.45rem 1rem;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+}
+.work-link.primary {
+  background: var(--green-deep);
+  color: var(--gold-light);
+}
+.work-link.primary:hover {
+  background: var(--green);
+  transform: translateX(3px);
+}
+.work-link.secondary {
+  background: transparent;
+  color: var(--green);
+  border: 1px solid var(--sage);
+}
+.work-link.secondary:hover {
+  background: var(--cream-dark);
+  border-color: var(--green);
+}
+.work-link-icon { font-size: 0.9rem; }
+
+/* Poster display */
+.poster-section {
+  margin-top: 1rem;
+}
+.poster-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 1.5rem;
+}
+.poster-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--green-deep);
+  font-weight: 600;
+}
+.poster-subtitle {
+  font-size: 0.85rem;
+  color: var(--gray);
+}
+.poster-wrapper {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(30,58,47,0.12);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.poster-wrapper:hover { transform: translateY(-3px); }
+.poster-wrapper img {
+  width: 100%;
+  display: block;
+  transition: transform 0.5s;
+}
+.poster-wrapper:hover img { transform: scale(1.02); }
+.poster-zoom-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: rgba(30,58,47,0.8);
+  color: var(--gold-light);
+  font-size: 0.75rem;
+  padding: 0.4rem 1rem;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.poster-wrapper:hover .poster-zoom-hint { opacity: 1; }
+
+/* Lightbox modal */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 95%;
+  max-height: 92vh;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 2001;
+}
+.lightbox-close:hover { color: var(--gold-light); }
+
+/* ========== Awards ========== */
+#awards { background: var(--white); }
+.awards-table-wrap {
+  overflow-x: auto;
+  border-radius: 4px;
+  border: 1px solid var(--cream-dark);
+  -webkit-overflow-scrolling: touch;
+}
+.awards-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  min-width: 720px;
+}
+.awards-table thead tr {
+  background: var(--green-deep);
+}
+.awards-table th {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--gold-light);
+  padding: 1rem 1.2rem;
+  text-align: left;
+  letter-spacing: 1.5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.awards-table tbody tr {
+  border-bottom: 1px solid var(--cream-dark);
+  transition: background 0.2s;
+}
+.awards-table tbody tr:nth-child(even) {
+  background: var(--cream);
+}
+.awards-table tbody tr:hover {
+  background: rgba(201,169,97,0.1);
+}
+.awards-table td {
+  padding: 0.9rem 1.2rem;
+  color: var(--green-deep);
+  vertical-align: middle;
+  line-height: 1.5;
+}
+.awards-table td.col-year {
+  font-family: var(--serif);
+  font-weight: 700;
+  color: var(--gold);
+  white-space: nowrap;
+  text-align: center;
+}
+.awards-table td.col-comp {
+  font-weight: 500;
+}
+.awards-table td.col-work {
+  color: var(--gray);
+  font-size: 0.82rem;
+}
+.awards-table td.col-award {
+  text-align: center;
+}
+.awards-table td.col-rank {
+  font-family: var(--serif);
+  font-weight: 600;
+  color: var(--green);
+  white-space: nowrap;
+  text-align: center;
+}
+.award-level {
+  font-family: var(--serif);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.3rem 0.7rem;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: inline-block;
+}
+.award-level.national { background: var(--green); color: var(--cream); }
+.award-level.provincial { background: var(--sage); color: var(--white); }
+.award-level.special { background: var(--green); color: var(--cream); }
+.award-work-note {
+  font-size: 0.82rem;
+  color: var(--gold);
+  margin-bottom: 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--cream);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 3px 3px 0;
+}
+.awards-summary {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--green-deep);
+  border-radius: 4px;
+}
+.awards-summary-item {
+  text-align: center;
+  color: var(--cream);
+}
+.awards-summary-num {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.awards-summary-label {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  margin-top: 0.5rem;
+  color: rgba(250,247,240,0.7);
+}
+
+/* Award categories */
+.award-category {
+  margin-bottom: 2.5rem;
+}
+.award-category:last-child { margin-bottom: 0; }
+.award-category-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+.award-category-tag {
+  font-family: var(--serif);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.8rem;
+  border-radius: 3px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.award-category-tag.national { background: var(--green); color: var(--cream); }
+.award-category-tag.provincial { background: var(--sage); color: var(--white); }
+.award-category-title {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  color: var(--green-deep);
+  font-weight: 600;
+}
+.award-category-count {
+  font-size: 0.78rem;
+  color: var(--gold);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+.award-category-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+
+/* Certificate gallery */
+.cert-section {
+  margin-top: 3rem;
+}
+.cert-section-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.cert-card {
+  position: relative;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+  background: var(--cream);
+  border: 1px solid var(--cream-dark);
+}
+.cert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(30,58,47,0.15);
+}
+.cert-card img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+.cert-card-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(30,58,47,0.92));
+  padding: 1.5rem 0.6rem 0.6rem;
+  color: var(--cream);
+}
+.cert-card-name {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  font-weight: 500;
+}
+.cert-card-level {
+  font-size: 0.6rem;
+  color: var(--gold-light);
+  letter-spacing: 1px;
+  margin-bottom: 0.2rem;
+}
+
+/* ========== Field Practice ========== */
+#practice { background: var(--cream); position: relative; overflow: hidden; }
+.practice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.practice-image {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(30,58,47,0.15);
+}
+.practice-image img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s;
+}
+.practice-image:hover img { transform: scale(1.05); }
+.practice-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.practice-stat {
+  padding: 1.5rem;
+  background: var(--white);
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(30,58,47,0.06);
+}
+.practice-stat-num {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--green);
+  line-height: 1;
+}
+.practice-stat-num small { font-size: 1rem; color: var(--gold); }
+.practice-stat-label {
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+.practice-text p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  line-height: 1.9;
+  margin-bottom: 1rem;
+}
+.skills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.skill-tag {
+  padding: 0.35rem 1rem;
+  background: var(--green-deep);
+  color: var(--gold-light);
+  border-radius: 3px;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ========== Photo Gallery ========== */
+.gallery-section {
+  margin-top: 3rem;
+}
+.gallery-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.gallery-title {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  white-space: nowrap;
+}
+.gallery-line {
+  flex: 1;
+  height: 1px;
+  background: var(--cream-dark);
+}
+.gallery-tag {
+  font-size: 0.78rem;
+  color: var(--gold);
+  white-space: nowrap;
+}
+.gallery-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 1rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sage) var(--cream-dark);
+}
+.gallery-scroll::-webkit-scrollbar { height: 6px; }
+.gallery-scroll::-webkit-scrollbar-track { background: var(--cream-dark); border-radius: 3px; }
+.gallery-scroll::-webkit-scrollbar-thumb { background: var(--sage); border-radius: 3px; }
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  animation: galleryScroll 120s linear infinite;
+}
+.gallery-track:hover { animation-play-state: paused; }
+.gallery-track.paused { animation-play-state: paused; }
+@keyframes galleryScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.gallery-item {
+  flex-shrink: 0;
+  width: 280px;
+  height: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 5px 18px rgba(30,58,47,0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.gallery-item:hover { transform: scale(1.03); }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.gallery-item-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(30,58,47,0.8));
+  color: var(--cream);
+  font-size: 0.75rem;
+  padding: 1.5rem 0.8rem 0.6rem;
+  letter-spacing: 1px;
+}
+
+/* ========== Future Plan ========== */
+#plan { background: var(--green-deep); color: var(--cream); }
+#plan .section-title { color: var(--cream); }
+#plan .section-label { color: var(--gold-light); }
+#plan .section-divider { background: var(--gold-light); }
+.plan-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.plan-item {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px;
+  border: 1px solid rgba(201,169,97,0.2);
+  transition: all 0.3s;
+}
+.plan-item:hover {
+  background: rgba(201,169,97,0.1);
+  border-color: var(--gold);
+  transform: translateY(-5px);
+}
+.plan-year {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.plan-desc {
+  font-size: 0.88rem;
+  color: rgba(250,247,240,0.8);
+  line-height: 1.7;
+}
+.plan-arrow {
+  font-size: 1.5rem;
+  color: var(--gold);
+  opacity: 0.4;
+  align-self: center;
+}
+
+/* Research plan card in dark section */
+.plan-research {
+  margin-top: 3rem;
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(201,169,97,0.25);
+  transition: all 0.3s;
+}
+.plan-research:hover {
+  background: rgba(201,169,97,0.08);
+  border-color: var(--gold);
+}
+.plan-research-cover {
+  width: 160px;
+  flex-shrink: 0;
+  cursor: pointer;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s;
+}
+.plan-research-cover:hover { transform: scale(1.03); }
+.plan-research-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.plan-research-cover-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(30,58,47,0.9));
+  padding: 1.5rem 0.5rem 0.4rem;
+  text-align: center;
+  color: var(--gold-light);
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+}
+.plan-research-info { flex: 1; }
+.plan-research-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.2rem 0.8rem;
+  background: var(--gold);
+  color: var(--green-deep);
+  border-radius: 3px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.plan-research-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--cream);
+  font-weight: 600;
+  line-height: 1.5;
+  margin-bottom: 0.6rem;
+}
+.plan-research-meta {
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  margin-bottom: 0.8rem;
+}
+.plan-research-desc {
+  font-size: 0.85rem;
+  color: rgba(250,247,240,0.75);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.plan-research-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: var(--gold-light);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201,169,97,0.4);
+  padding-bottom: 0.2rem;
+  transition: border-color 0.3s;
+}
+.plan-research-link:hover { border-color: var(--gold); }
+
+/* Passion / Vision block */
+.plan-passion {
+  margin-top: 3rem;
+  padding: 2.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 6px;
+  border: 1px solid rgba(201,169,97,0.25);
+  position: relative;
+}
+.plan-passion::before {
+  content: '"';
+  position: absolute;
+  top: -0.5rem; left: 1.5rem;
+  font-family: var(--serif);
+  font-size: 5rem;
+  color: rgba(201,169,97,0.15);
+  line-height: 1;
+}
+.plan-passion-label {
+  font-size: 0.75rem;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+}
+.plan-passion-text {
+  font-size: 0.9rem;
+  color: rgba(250,247,240,0.85);
+  line-height: 2;
+}
+.plan-passion-text p { margin-bottom: 1rem; }
+.plan-passion-text p:last-child { margin-bottom: 0; }
+.plan-passion-text .em {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+/* ========== Contact ========== */
+#contact {
+  background: var(--cream);
+  text-align: center;
+  padding: 6rem 2rem;
+}
+.contact-title {
+  font-family: var(--serif);
+  font-size: 2.2rem;
+  color: var(--green-deep);
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+}
+.contact-subtitle {
+  font-size: 1rem;
+  color: var(--gray);
+  margin-bottom: 3rem;
+}
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.contact-item {
+  text-align: center;
+}
+.contact-item-label {
+  font-size: 0.8rem;
+  color: var(--gray-light);
+  letter-spacing: 2px;
+  margin-bottom: 0.5rem;
+}
+.contact-item-value {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--green-deep);
+  font-weight: 500;
+}
+
+/* ========== Footer ========== */
+footer {
+  background: var(--green-deep);
+  color: rgba(250,247,240,0.5);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* ========== Scroll Reveal ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* ========== Responsive ========== */
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .section-title { font-size: 1.8rem; }
+  .about-grid, .practice-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-english { flex-direction: column; text-align: center; }
+  .about-english-img { width: 100%; }
+  .academic-grid { grid-template-columns: 1fr; }
+  .courses-section { grid-template-columns: 1fr; }
+  .awards-table { min-width: 600px; }
+  .awards-table th, .awards-table td { padding: 0.7rem 0.8rem; }
+  .cert-grid { grid-template-columns: repeat(2, 1fr); }
+  .works-grid { grid-template-columns: 1fr; }
+  .poster-section [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .poster-section [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr !important; }
+  .work-card { flex-direction: column; gap: 1.2rem; }
+  .work-cover { width: 100%; height: 200px; }
+  .plan-timeline { grid-template-columns: 1fr 1fr; }
+  .plan-research { flex-direction: column; gap: 1.2rem; }
+  .plan-research-cover { width: 100%; height: 200px; }
+  .hero-stat { padding: 0 1rem; }
+  .hero-stat-num { font-size: 1.4rem; }
+  .awards-summary { flex-direction: column; gap: 1.5rem; }
+  .contact-info { flex-direction: column; gap: 1.5rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="progressBar"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <div class="nav-logo">张鹏宇</div>
+  <ul class="nav-links">
+    <li><a href="#about">简介</a></li>
+    <li><a href="#academic">学业</a></li>
+    <li><a href="#research">科研</a></li>
+    <li><a href="#works">成果</a></li>
+    <li><a href="#awards">竞赛</a></li>
+    <li><a href="#practice">实践</a></li>
+    <li><a href="#plan">规划</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tagline-top">河北大学 · 旅游管理 · 2023级</div>
+    <h1 class="hero-name">张鹏宇</h1>
+    <div class="hero-name-en">Zhang Pengyu</div>
+    <p class="hero-poem">行读<span>田野</span>知中国　心向<span>乡土</span>赴新程</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="hero-stat-num">4.3<span style="font-size:1rem">/5.0</span></div>
+        <div class="hero-stat-label">GPA</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">1<span style="font-size:1rem">/28</span></div>
+        <div class="hero-stat-label">专业排名</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">国家级奖项</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">7</div>
+        <div class="hero-stat-label">科研项目</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- About -->
+<section id="about">
+  <div class="container">
+    <div class="reveal section-label">About Me</div>
+    <h2 class="reveal section-title">个人简介</h2>
+    <div class="reveal section-divider"></div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p>我是张鹏宇，河北大学管理学院旅游管理专业2023级本科生，<span class="highlight">三年成绩稳居专业第一</span>，获国家奖学金（本学院2023级唯一）、国家励志奖学金等荣誉，具备外保资格。</p>
+        <p>我热爱乡村旅游研究，拥有<span class="highlight">4县6村</span>实地田野调查经验，独立完成50+名农户深度访谈。参与<span class="highlight">3项国家社科基金项目</span>（含重大项目），以第一作者撰写学术论文并参与撰写学术专著，主持2项校级科研项目，累计获7项国家级、4项省级竞赛奖项。</p>
+        <p>大一即考取导游证，累计带团15次。同时具备Python、ArcGIS等跨学科技能，致力于将AI技术融入旅游研究。</p>
+        <div class="about-traits">
+          <span class="trait-tag">ENFP · 阳光上进</span>
+          <span class="trait-tag">责任心强</span>
+          <span class="trait-tag">踏实肯干</span>
+          <span class="trait-tag">热爱摄影</span>
+          <span class="trait-tag">善于记录</span>
+        </div>
+        <div class="about-english reveal">
+          <div class="about-english-img" onclick="openLightbox('video-channel.png')">
+            <img src="video-channel.png" alt="视频号口语练习">
+          </div>
+          <div class="about-english-text">
+            <strong>英语口语练习视频号</strong><br>
+            正在努力弥补英语口语的不足，坚持每日练习口语并发布练习视频，以持续的输出倒逼输入，在刻意练习中不断提升英语表达能力。
+          </div>
+        </div>
+      </div>
+      <div class="about-card reveal reveal-delay-1">
+        <div class="about-card-row">
+          <span class="about-card-label">学校</span>
+          <span class="about-card-value">河北大学（部省合建）</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">学院专业</span>
+          <span class="about-card-value">管理学院 · 旅游管理（软科B+）</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">出生年月</span>
+          <span class="about-card-value">2005年01月</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">政治面貌</span>
+          <span class="about-card-value">共青团员</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">毕业时间</span>
+          <span class="about-card-value">2027年06月</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">CET-6</span>
+          <span class="about-card-value">495</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">意向方向</span>
+          <span class="about-card-value">乡村旅游</span>
+        </div>
+        <div class="about-card-row">
+          <span class="about-card-label">联系方式</span>
+          <span class="about-card-value">18035341941</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Academic -->
+<section id="academic">
+  <div class="container">
+    <div class="reveal section-label">Academic Excellence</div>
+    <h2 class="reveal section-title">学业表现</h2>
+    <div class="reveal section-divider"></div>
+    <div class="academic-grid">
+      <div class="academic-card reveal">
+        <div class="academic-card-num">4.3<span class="academic-card-unit">/5.0</span></div>
+        <div class="academic-card-label">绩点（前三年）</div>
+        <div class="academic-card-sub">19门课程90+</div>
+      </div>
+      <div class="academic-card reveal reveal-delay-1">
+        <div class="academic-card-num">1<span class="academic-card-unit">/28</span></div>
+        <div class="academic-card-label">推免排名</div>
+        <div class="academic-card-sub">具备外保资格</div>
+      </div>
+      <div class="academic-card reveal reveal-delay-2">
+        <div class="academic-card-num">42</div>
+        <div class="academic-card-label">主修课程门数</div>
+        <div class="academic-card-sub">涵盖旅游管理全领域</div>
+      </div>
+    </div>
+    <div class="courses-section">
+      <div class="reveal">
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--green-deep);margin-bottom:1.5rem;">核心课程</h3>
+        <div class="courses-list">
+          <div class="course-item"><span class="course-name">统计学</span><span class="course-score">97</span></div>
+          <div class="course-item"><span class="course-name">旅游文化学</span><span class="course-score">97</span></div>
+          <div class="course-item"><span class="course-name">Python语言程序设计</span><span class="course-score">95</span></div>
+          <div class="course-item"><span class="course-name">旅游文化创意产业管理</span><span class="course-score">95</span></div>
+          <div class="course-item"><span class="course-name">旅游景区管理与实务</span><span class="course-score">94</span></div>
+          <div class="course-item"><span class="course-name">旅游法律法规</span><span class="course-score">94</span></div>
+          <div class="course-item"><span class="course-name">旅游经济学</span><span class="course-score">94</span></div>
+          <div class="course-item"><span class="course-name">旅游市场营销</span><span class="course-score">94</span></div>
+          <div class="course-item"><span class="course-name">宏观经济学</span><span class="course-score">93</span></div>
+          <div class="course-item"><span class="course-name">中国旅游发展史</span><span class="course-score">93</span></div>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--green-deep);margin-bottom:1.5rem;">荣誉奖学金</h3>
+        <div class="scholarships-list">
+          <div class="scholarship-item">
+            <div class="scholarship-icon">★</div>
+            <div>
+              <div class="scholarship-name">国家奖学金</div>
+              <div class="scholarship-note">本学院2023级唯一获得者</div>
+            </div>
+          </div>
+          <div class="scholarship-item">
+            <div class="scholarship-icon">★</div>
+            <div>
+              <div class="scholarship-name">国家励志奖学金</div>
+            </div>
+          </div>
+          <div class="scholarship-item">
+            <div class="scholarship-icon">★</div>
+            <div>
+              <div class="scholarship-name">校级一等奖学金</div>
+            </div>
+          </div>
+          <div class="scholarship-item">
+            <div class="scholarship-icon">★</div>
+            <div>
+              <div class="scholarship-name">科技竞赛活动单项奖学金</div>
+            </div>
+          </div>
+        </div>
+        <div class="position-section">
+          <h3 style="font-family:var(--serif);font-size:1.3rem;color:var(--green-deep);margin-bottom:1.2rem;">学生任职</h3>
+          <div class="position-list">
+            <div class="position-item">
+              <div class="position-icon">◆</div>
+              <div class="position-name">河北大学旅游协同创新中心 学生负责人</div>
+            </div>
+            <div class="position-item">
+              <div class="position-icon">◆</div>
+              <div class="position-name">"Hbu河大旅游"公众号 负责人</div>
+            </div>
+            <div class="position-item">
+              <div class="position-icon">◆</div>
+              <div class="position-name">2023级旅游管理年级组织委员</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Research -->
+<section id="research">
+  <div class="container">
+    <div class="reveal section-label">Research Journey</div>
+    <h2 class="reveal section-title">科研经历</h2>
+    <div class="reveal section-divider"></div>
+
+    <!-- Part 1: 国家级科研项目 -->
+    <div class="research-part reveal">
+      <div class="research-part-header">
+        <div class="research-part-num">1</div>
+        <span class="research-part-title">国家级科研项目</span>
+        <span class="research-part-count">3项国家社科基金</span>
+        <div class="research-part-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item highlight reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">在投论文 · 第一作者</span>
+          <h3 class="timeline-title">拼装理论视域下传统村落农户生计决策生成机制——以阜平县骆驼湾村为例</h3>
+          <div class="timeline-role">国家社科基金（21BGL020）阶段性研究成果 · 排名第1</div>
+          <p class="timeline-desc">聚焦阜平县骆驼湾村这一典型乡村旅游村落，利用ArcGIS绘制案例地研究区位图，独立完成50+名农户深度田野访谈，依托拼装理论与扎根理论开展系统分析，探究农户参与乡村旅游的内在逻辑，撰写完成学术论文。</p>
+          <div class="timeline-achievements">
+            <span class="achievement-tag">传统村落田野调查大赛全国二等奖</span>
+            <span class="achievement-tag">入围人大"卓越三农·新秀"论坛</span>
+            <span class="achievement-tag">最佳田野奖</span>
+            <span class="achievement-tag">2场学术会议</span>
+          </div>
+        </div>
+        <div class="timeline-item highlight reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">国社科重大项目 · 调研员</span>
+          <h3 class="timeline-title">中国基层治理现代化的制度、成效与经验研究（24&ZD142）</h3>
+          <div class="timeline-role">调研员 · 负责质性编码与实证分析 · 排名第1</div>
+          <p class="timeline-desc">探究乡村文旅融合发展与基层治理协同发展路径。对3万字访谈文本进行扎根理论三级编码，提炼54个概念、18个范畴、4个主范畴，构建乡村红色旅游融合发展四维同心圆模型；完成294份问卷的信效度检验与IPA分析，形成2万字调研报告《红韵交响，城乡共舞：城乡融合背景下燕太片区红色旅游融合发展研究》。</p>
+        </div>
+        <div class="timeline-item highlight reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">学术专著 · 学生第一负责人</span>
+          <h3 class="timeline-title">习近平生态文明思想进课程教材实践路径研究</h3>
+          <div class="timeline-role">国家社科后期资助（23FKSB001）· 学生第一负责人 · 出版中</div>
+          <p class="timeline-desc">参与生态文明思想融入专业教育的专著编写，与乡村旅游和生态旅游有较强关联性。协助老师撰写教育部大中小学课程教材研究项目申报书，初步掌握高规格文本撰写逻辑。专著已获出版社批准，正在完善出版。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 2: 创新训练项目 -->
+    <div class="research-part reveal">
+      <div class="research-part-header">
+        <div class="research-part-num">2</div>
+        <span class="research-part-title">创新训练项目</span>
+        <span class="research-part-count">省级大创 · 中科院科创</span>
+        <div class="research-part-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">省级大创 · 第二负责人</span>
+          <h3 class="timeline-title">坡韵野居——灾后野三坡民宿重建的升级与探索</h3>
+          <div class="timeline-role">第二负责人 · 已结题</div>
+          <p class="timeline-desc">全程负责项目调研报告撰写与扎根理论三级编码工作。自学Visio软件绘制项目技术路线图与研究流程图，培养图文结合、严谨规范的学术写作习惯，助力项目顺利通过省级大创结题。</p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">中科院科创 · 第二负责人</span>
+          <h3 class="timeline-title">京津冀美丽城市建设的智能决策方法与绿色低碳发展模式</h3>
+          <div class="timeline-role">第二负责人 · 在研</div>
+          <p class="timeline-desc">聚焦京津冀城乡建设与绿色发展研究。依托Python课程基础（95分），结合AI技术与高德地图接口，批量提取20座城市文旅与乡村发展相关数据，高效完成数据汇总与可视化分析。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 3: 校级科研项目 -->
+    <div class="research-part reveal">
+      <div class="research-part-header">
+        <div class="research-part-num">3</div>
+        <span class="research-part-title">校级科研项目</span>
+        <span class="research-part-count">2项主持</span>
+        <div class="research-part-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">强能励志项目 · 第一负责人</span>
+          <h3 class="timeline-title">星途"AI"学伴——基于人工智能的学习规划系统</h3>
+          <div class="timeline-role">河北大学强能励志项目 · 第一负责人 · 优秀结题</div>
+          <p class="timeline-desc">作为第一负责人撰写项目策划书，围绕AI辅助学习的理念，规划智能问答与个性化学习路径推荐方案，探索人工智能在教育领域的应用可能，项目获评优秀结题。</p>
+        </div>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <span class="timeline-tag">实验室开放项目 · 第一负责人</span>
+          <h3 class="timeline-title">智慧学航——基于多模态大模型的智能教育知识图谱系统</h3>
+          <div class="timeline-role">河北大学实验室开放项目 · 第一负责人 · 立项在研</div>
+          <p class="timeline-desc">融合多模态大模型技术，构建智能教育知识图谱系统，探索AI技术在教育领域的创新应用路径，提升知识获取与自主学习的智能化水平，拓展文旅知识管理的技术边界。</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Part 4: 学术会议与交流 -->
+    <div class="research-part reveal">
+      <div class="research-part-header">
+        <div class="research-part-num">4</div>
+        <span class="research-part-title">学术会议与交流</span>
+        <div class="research-part-line"></div>
+      </div>
+      <div class="conference-item">
+        <span class="conference-date">2025.11</span>
+        <div class="conference-text">作品《拼装理论视域下传统村落农户生计决策生成机制——以阜平县骆驼湾村为例》入围<strong>中国人民大学"卓越三农·新秀"论坛</strong>。</div>
+      </div>
+      <div class="conference-item">
+        <span class="conference-date">2025</span>
+        <div class="conference-text">携上述作品参加<strong>"乡村振兴战略背景下的中国传统村落"田野调查大赛获奖作品交流会</strong>，制作海报与PPT，完成学术交流展示。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Works / Publications -->
+<section id="works">
+  <div class="container">
+    <div class="reveal section-label">Publications & Reports</div>
+    <h2 class="reveal section-title">研究成果</h2>
+    <div class="reveal section-divider"></div>
+    <p class="reveal works-intro">以下为本人独立完成及参与的核心研究成果，点击封面或按钮可在线查看全文。</p>
+
+    <div class="works-grid">
+      <!-- Paper -->
+      <div class="work-card reveal">
+        <div class="work-cover" onclick="window.open('paper-luotuowan.pdf', '_blank')">
+          <img src="paper-cover.jpg" alt="论文封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">在投论文 · 第一作者</span>
+          <h3 class="work-title">拼装理论视域下传统村落农户生计决策生成机制——以阜平县骆驼湾村为例</h3>
+          <div class="work-meta">邢慧斌，张鹏宇 ｜ 河北大学管理学院 ｜ 国家社科基金（21BGL020）阶段性成果</div>
+          <p class="work-abstract">引入拼装理论，以深度贫困村向乡村振兴示范村转型的骆驼湾村为案例，通过扎根理论分析50+名农户深度访谈数据，揭示农户生计决策的动态生成过程。提出"场域碰撞"与"决策涟漪"核心机制，构建"生计转型拼装体"理论模型。</p>
+          <div class="work-links">
+            <a href="paper-luotuowan.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看全文
+            </a>
+            <a href="paper-presentation.pdf" target="_blank" class="work-link secondary">
+              <span class="work-link-icon">&#128202;</span> 查看汇报PPT
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Report -->
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-cover" onclick="window.open('report-red-tourism.pdf', '_blank')">
+          <img src="report-cover.jpg" alt="调研报告封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">调研报告 · 2万字</span>
+          <h3 class="work-title">红韵交响，城乡共舞：城乡融合背景下燕太片区红色旅游融合发展的模式和路径研究</h3>
+          <div class="work-meta">国社科重大项目（24&ZD142）调研员 ｜ 保定8县实证研究</div>
+          <p class="work-abstract">聚焦燕太片区保定8县，构建红色旅游融合发展评价指标体系，采用CRITIC-TOPSIS法定量评价，运用IPA-SNIP模型与扎根理论分析，构建"四维同心圆"融合发展模式。完成294份问卷信效度检验，提炼54个概念、18个范畴。</p>
+          <div class="work-links">
+            <a href="report-red-tourism.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看全文
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-section: Projects -->
+    <div class="reveal" style="margin: 3.5rem 0 0.5rem; display:flex; align-items:center; gap:1rem;">
+      <h3 style="font-family:var(--serif); font-size:1.3rem; color:var(--green-deep); font-weight:600;">创新训练项目与专著</h3>
+      <div style="flex:1; height:1px; background:var(--cream-dark);"></div>
+    </div>
+
+    <div class="works-grid" style="margin-top:2rem;">
+      <!-- 坡韵野居 -->
+      <div class="work-card reveal">
+        <div class="work-cover" onclick="window.open('report-yesanpo.pdf', '_blank')">
+          <img src="report-yesanpo-cover.jpg" alt="坡韵野居结题材料封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">省级大创 · 第二负责人 · 已结题</span>
+          <h3 class="work-title">坡韵野居——灾后野三坡民宿重建的升级与探索</h3>
+          <div class="work-meta">项目编号：S202410075114X ｜ 河北大学管理学院 ｜ 指导教师：佟薇</div>
+          <p class="work-abstract">研究灾后野三坡乡村民宿重建的升级路径。负责调研报告撰写与扎根理论三级编码，自学Visio绘制技术路线图。涵盖商业计划书、市场分析、运营模式、营销策略等完整内容，共103页结题支撑材料。</p>
+          <div class="work-links">
+            <a href="report-yesanpo.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 查看结题材料
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 京津冀美丽城市建设 -->
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-cover" onclick="window.open('preview-code.html', '_blank')">
+          <img src="data-cover.jpg" alt="京津冀数据项目">
+          <div class="work-cover-overlay"><span>查看代码</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">中科院科创 · 第二负责人 · 在研</span>
+          <h3 class="work-title">京津冀美丽城市建设的智能决策方法与绿色低碳发展模式</h3>
+          <div class="work-meta">中国科学院地理科学与资源研究所 ｜ 数据采集与分析</div>
+          <p class="work-abstract">运用Python结合高德地图API，批量采集京津冀20个区县的园区级发展数据（工业园、开发区、高新区等8类），完成数据清洗、分类标记与可视化分析，为绿色低碳评价模型提供数据支撑。</p>
+          <div class="work-links">
+            <a href="preview-code.html" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128187;</span> 在线查看代码
+            </a>
+            <a href="preview-data.html" target="_blank" class="work-link secondary">
+              <span class="work-link-icon">&#128202;</span> 在线查看数据
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 习近平生态文明思想专著 -->
+      <div class="work-card reveal" style="grid-column: 1 / -1; max-width: 650px; margin: 0 auto;">
+        <div class="work-cover" onclick="window.open('monograph-ecology.pdf', '_blank')">
+          <img src="monograph-cover.jpg" alt="专著封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag">学术专著 · 学生第一负责人 · 出版中</span>
+          <h3 class="work-title">习近平生态文明思想进课程教材实践路径研究</h3>
+          <div class="work-meta">与乡村旅游和生态旅游强关联 ｜ 已获出版社批准 ｜ 协助撰写教育部课程教材研究项目申报书</div>
+          <p class="work-abstract">参与生态文明思想融入专业教育实践路径的专著编写。通过自学申请书范本，规范完成教育部大中小学课程教材研究项目申报书撰写，初步掌握高规格文本撰写逻辑。专著正在完善出版阶段。</p>
+          <div class="work-links">
+            <a href="monograph-ecology.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看全文
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-section: Competition Works -->
+    <div class="reveal" style="margin: 3.5rem 0 0.5rem; display:flex; align-items:center; gap:1rem;">
+      <h3 style="font-family:var(--serif); font-size:1.3rem; color:var(--green-deep); font-weight:600;">AI+文旅创新竞赛作品</h3>
+      <div style="flex:1; height:1px; background:var(--cream-dark);"></div>
+    </div>
+
+    <div class="works-grid" style="margin-top:2rem;">
+      <!-- 太行烽火 -->
+      <div class="work-card reveal">
+        <div class="work-cover" onclick="window.open('work-taihang.pdf', '_blank')">
+          <img src="work-taihang-cover.jpg" alt="太行烽火剧本杀封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">红色旅游线路设计 · 第一负责人</span>
+          <h3 class="work-title">太行烽火1942：一号公路的生死密运——Z世代"AI+文旅剧本杀"研学新模式</h3>
+          <div class="work-meta">烽火太行队 ｜ 河北大学 ｜ 39页完整设计方案</div>
+          <p class="work-abstract">以太行山红色抗战历史为背景，创新设计"AI+文旅剧本杀"研学模式。融合角色扮演、关卡解谜与实地研学，涵盖产品介绍、市场分析、研学课程设计、行程安排、费用报价等完整方案，打造Z世代沉浸式红色旅游新体验。</p>
+          <div class="work-links">
+            <a href="work-taihang.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看方案
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 核污水剧本游 -->
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-cover" onclick="window.open('work-nuclear.pdf', '_blank')">
+          <img src="work-nuclear-cover.jpg" alt="碧波守护者封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">海洋旅游创意设计 · 第一负责人</span>
+          <h3 class="work-title">碧波守护者：核污水之战——地图剧本游产品设计</h3>
+          <div class="work-meta">新时代海洋小纵队 ｜ 53页产品说明书 ｜ 连续两年斩获国奖</div>
+          <p class="work-abstract">以海洋生态保护为主题，设计沉浸式地图剧本游产品。包含三条线路剧本、角色设定、关卡玩法、每日行程等完整内容，将核污水议题转化为教育性旅游体验，创新"旅游+剧本游+环保教育"融合模式。</p>
+          <div class="work-links">
+            <a href="work-nuclear.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看方案
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-section: AI Innovation Works -->
+    <div class="reveal" style="margin: 3.5rem 0 0.5rem; display:flex; align-items:center; gap:1rem;">
+      <h3 style="font-family:var(--serif); font-size:1.3rem; color:var(--green-deep); font-weight:600;">AI项目</h3>
+      <div style="flex:1; height:1px; background:var(--cream-dark);"></div>
+    </div>
+
+    <div class="works-grid" style="margin-top:2rem;">
+      <!-- 碳索水脉 -->
+      <div class="work-card reveal">
+        <div class="work-cover" onclick="window.open('work-carbon2.pdf', '_blank')">
+          <img src="work-carbon2-cover.jpg" alt="碳索水脉封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">挑战杯 · 负责人 · 103页商业计划书</span>
+          <h3 class="work-title">碳索水脉，节尽所能——AI驱动工业节水减排智能系统</h3>
+          <div class="work-meta">第十九届"挑战杯"全国大学生课外学术科技作品竞赛 ｜ 河北大学 ｜ 负责人：张鹏宇</div>
+          <p class="work-abstract">面向工业节水减排领域，研发AI驱动的智能预警与优化系统。解决传统方案异常预警速度慢、操作复杂、成本高等痛点，涵盖产品介绍、核心竞争力、商业模式、市场分析、财务预测等完整商业计划，国内首创综合节水智能方案。</p>
+          <div class="work-links">
+            <a href="work-carbon2.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看计划书
+            </a>
+            <a href="work-carbon1.pdf" target="_blank" class="work-link secondary">
+              <span class="work-link-icon">&#128202;</span> 查看PPT版
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 星途AI -->
+      <div class="work-card reveal reveal-delay-1">
+        <div class="work-cover" onclick="window.open('work-startrek.pdf', '_blank')">
+          <img src="work-startrek-cover.jpg" alt="星途AI封面">
+          <div class="work-cover-overlay"><span>点击查看</span></div>
+        </div>
+        <div class="work-info">
+          <span class="work-tag report">AI创新 · 95页完整方案</span>
+          <h3 class="work-title">星途AI——基于知识图谱的智能学习问答与路径推荐平台</h3>
+          <div class="work-meta">融合知识图谱构建、P-Tuning v2微调、KP-GLM路径推荐模型</div>
+          <p class="work-abstract">整合前沿AI技术，自动构建百门专业课程知识图谱，应用图谱检索增强实现精准问答互动，生成个性化学习路径与计划。解决信息零散杂乱、专业学习痛点，覆盖系统知识网络构建与自主学习支持。</p>
+          <div class="work-links">
+            <a href="work-startrek.pdf" target="_blank" class="work-link primary">
+              <span class="work-link-icon">&#128279;</span> 在线查看方案
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Research Posters -->
+    <div class="poster-section reveal">
+      <div class="poster-header">
+        <div>
+          <div class="poster-title">研究成果展板</div>
+          <div class="poster-subtitle">学术论坛参展与大创项目结题展板，点击可放大查看</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:2rem;">
+        <div>
+          <div style="font-size:0.82rem; color:var(--gold); margin-bottom:0.6rem; letter-spacing:1px;">骆驼湾村农户生计决策研究</div>
+          <div class="poster-wrapper" onclick="openLightbox('research-poster.png')">
+            <img src="research-poster.png" alt="骆驼湾村研究成果展板">
+            <div class="poster-zoom-hint">点击放大查看</div>
+          </div>
+          <div style="font-size:0.78rem; color:var(--gray); margin-top:0.6rem; line-height:1.6;">人大"卓越三农·新秀"论坛 ｜ 田野调查大赛全国二等奖</div>
+        </div>
+        <div>
+          <div style="font-size:0.82rem; color:var(--gold); margin-bottom:0.6rem; letter-spacing:1px;">坡韵野居民宿重建研究</div>
+          <div class="poster-wrapper" onclick="openLightbox('poster-yesanpo.png')">
+            <img src="poster-yesanpo.png" alt="坡韵野居大创项目展板">
+            <div class="poster-zoom-hint">点击放大查看</div>
+          </div>
+          <div style="font-size:0.78rem; color:var(--gray); margin-top:0.6rem; line-height:1.6;">省级大创项目成果展板 ｜ 灾后野三坡民宿重建探索</div>
+        </div>
+        <div>
+          <div style="font-size:0.82rem; color:var(--gold); margin-bottom:0.6rem; letter-spacing:1px;">AI创新竞赛作品</div>
+          <div class="poster-wrapper" onclick="openLightbox('poster-competition.png')">
+            <img src="poster-competition.png" alt="竞赛作品展板">
+            <div class="poster-zoom-hint">点击放大查看</div>
+          </div>
+          <div style="font-size:0.78rem; color:var(--gray); margin-top:0.6rem; line-height:1.6;">机械工程创新创意大赛国三 ｜ 机器人及人工智能大赛国三</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="放大查看">
+</div>
+
+<!-- Awards -->
+<section id="awards">
+  <div class="container">
+    <div class="reveal section-label">Awards & Competitions</div>
+    <h2 class="reveal section-title">竞赛荣誉</h2>
+    <div class="reveal section-divider"></div>
+    <div class="awards-summary reveal">
+      <div class="awards-summary-item">
+        <div class="awards-summary-num">7</div>
+        <div class="awards-summary-label">国家级奖项</div>
+      </div>
+      <div class="awards-summary-item">
+        <div class="awards-summary-num">4</div>
+        <div class="awards-summary-label">省级奖项</div>
+      </div>
+      <div class="awards-summary-item">
+        <div class="awards-summary-num">11</div>
+        <div class="awards-summary-label">累计获奖</div>
+      </div>
+    </div>
+
+    <!-- Category 1: 文旅与田野调查 -->
+    <div class="award-category reveal">
+      <div class="award-category-header">
+        <span class="award-category-title">文旅创意与田野调查类</span>
+        <span class="award-category-count">5项国家级 · 1项省级</span>
+        <div class="award-category-line"></div>
+      </div>
+      <div class="awards-table-wrap">
+        <table class="awards-table">
+          <thead>
+            <tr>
+              <th style="text-align:center;">年份</th>
+              <th>竞赛名称</th>
+              <th>获奖作品</th>
+              <th style="text-align:center;">奖项</th>
+              <th style="text-align:center;">排名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-comp">"到田野去"2026数字化田野研究挑战赛</td>
+              <td class="col-work">《拼装理论视域下传统村落农户生计决策生成机制——以阜平县骆驼湾村为例》</td>
+              <td class="col-award"><span class="award-level special">最佳田野奖</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">第六届"乡村振兴战略背景下"中国传统村落田野调查大赛</td>
+              <td class="col-work">《拼装理论视域下传统村落农户生计决策生成机制——以阜平县骆驼湾村为例》</td>
+              <td class="col-award"><span class="award-level national">国二</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-comp">第五届"记录乡土中国"民俗文化社会调查征稿</td>
+              <td class="col-work">《拼装理论视域下传统村落农户生计决策机制——以阜平县骆驼湾村为例》</td>
+              <td class="col-award"><span class="award-level national">国二</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+            <tr>
+              <td class="col-year">2024</td>
+              <td class="col-comp">第二届全国大学生海洋旅游创意设计大赛</td>
+              <td class="col-work">《来一场剧本杀式的旅游》</td>
+              <td class="col-award"><span class="award-level national">国二</span></td>
+              <td class="col-rank">第6</td>
+            </tr>
+            <tr>
+              <td class="col-year">2024</td>
+              <td class="col-comp">第三届全国大学生海洋旅游创意设计大赛</td>
+              <td class="col-work">《环渤海地图剧本游：碧波守护者——核污水之战》</td>
+              <td class="col-award"><span class="award-level national">国二</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">第十五届全国大学生红色旅游创意策划大赛</td>
+              <td class="col-work">《太行烽火1942：一号公路的生死密运》</td>
+              <td class="col-award"><span class="award-level provincial">省二</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Category 2: AI与智能制造 -->
+    <div class="award-category reveal">
+      <div class="award-category-header">
+        <span class="award-category-title">AI创新与智能制造类</span>
+        <span class="award-category-count">2项国家级 · 3项省级</span>
+        <div class="award-category-line"></div>
+      </div>
+      <div class="award-work-note">参赛作品：《智感探漏·节能有道——基于深度学习的异常用水报警与处理系统》</div>
+      <div class="awards-table-wrap">
+        <table class="awards-table">
+          <thead>
+            <tr>
+              <th style="text-align:center;">年份</th>
+              <th>竞赛名称</th>
+              <th style="text-align:center;">奖项</th>
+              <th style="text-align:center;">排名</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">第二十七届中国机器人及人工智能大赛</td>
+              <td class="col-award"><span class="award-level national">国三</span></td>
+              <td class="col-rank">第2</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">中国大学生机械工程创新创意大赛</td>
+              <td class="col-award"><span class="award-level national">国三</span></td>
+              <td class="col-rank">第4</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">第十九届CIMC"西门子杯"中国智能制造挑战赛</td>
+              <td class="col-award"><span class="award-level provincial">省一</span></td>
+              <td class="col-rank">第1</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">第十九届iCAN大学生创新创业大赛</td>
+              <td class="col-award"><span class="award-level provincial">省三</span></td>
+              <td class="col-rank">第5</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-comp">中国大学生计算机设计大赛</td>
+              <td class="col-award"><span class="award-level provincial">省三</span></td>
+              <td class="col-rank">第4</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Field Practice -->
+<section id="practice">
+  <div class="container">
+    <div class="reveal section-label">Field Practice</div>
+    <h2 class="reveal section-title">田野实践</h2>
+    <div class="reveal section-divider"></div>
+    <div class="practice-grid">
+      <div class="practice-image reveal">
+        <img src="photos/field-07-shannan1.png" alt="田野调查" style="cursor:pointer;" onclick="openLightbox('photos/field-07-shannan1.png')">
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="practice-stats">
+          <div class="practice-stat">
+            <div class="practice-stat-num">15<small>次</small></div>
+            <div class="practice-stat-label">导游带团实践</div>
+          </div>
+          <div class="practice-stat">
+            <div class="practice-stat-num">4<small>县</small>6<small>村</small></div>
+            <div class="practice-stat-label">田野调查范围</div>
+          </div>
+          <div class="practice-stat">
+            <div class="practice-stat-num">50+<small>人</small></div>
+            <div class="practice-stat-label">深度农户访谈</div>
+          </div>
+          <div class="practice-stat">
+            <div class="practice-stat-num">1</div>
+            <div class="practice-stat-label">导游资格证书</div>
+          </div>
+        </div>
+        <div class="practice-text">
+          <p>高考结束即备考导游证，大一成为本专业最早持证学生，累计带团15次，将课堂理论转化为实践能力。</p>
+          <p>热爱田野调查，足迹遍及4县6村，独立完成50+名农户深度访谈，将一手调研数据转化为学术成果。从问卷设计到扎根编码，从ArcGIS制图到论文撰写，具备完整的科研链条能力。</p>
+        </div>
+        <div class="skills-row">
+          <span class="skill-tag">扎根理论编码</span>
+          <span class="skill-tag">ArcGIS</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Visio</span>
+          <span class="skill-tag">IPA分析</span>
+          <span class="skill-tag">问卷信效度检验</span>
+          <span class="skill-tag">AI+旅游</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Field Research Photo Gallery -->
+    <div class="gallery-section reveal">
+      <div class="gallery-header">
+        <span class="gallery-title">田野调查影像</span>
+        <div class="gallery-line"></div>
+        <span class="gallery-tag">东西水村 · 黄土岭 · 山南村 · 松山村 ｜ 鼠标悬停暂停</span>
+      </div>
+      <div class="gallery-scroll" id="fieldGallery">
+        <div class="gallery-track" id="fieldTrack">
+          <div class="gallery-item" onclick="openLightbox('photos/field-01-dongxishui1.png')"><img src="photos/field-01-dongxishui1.png" alt="东西水村"><div class="gallery-item-label">东西水村 · 深度访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-02-dongxishui2.png')"><img src="photos/field-02-dongxishui2.png" alt="东西水村"><div class="gallery-item-label">东西水村 · 农户走访</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-03-dongxishui3.jpg')"><img src="photos/field-03-dongxishui3.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 田野纪实</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-04-dongxishui4.jpg')"><img src="photos/field-04-dongxishui4.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 村落风貌</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-05-dongxishui5.jpg')"><img src="photos/field-05-dongxishui5.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 实地调研</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-06-dongxishui6.jpg')"><img src="photos/field-06-dongxishui6.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 乡村记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-10-huangtuling1.jpg')"><img src="photos/field-10-huangtuling1.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 调研纪实</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-11-huangtuling2.jpg')"><img src="photos/field-11-huangtuling2.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 田野走访</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-12-huangtuling3.jpg')"><img src="photos/field-12-huangtuling3.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 实地考察</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-13-huangtuling4.jpg')"><img src="photos/field-13-huangtuling4.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 乡村影像</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-14-huangtuling5.jpg')"><img src="photos/field-14-huangtuling5.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 调研记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-07-shannan1.png')"><img src="photos/field-07-shannan1.png" alt="山南村"><div class="gallery-item-label">山南村 · 访谈记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-08-shannan2.png')"><img src="photos/field-08-shannan2.png" alt="山南村"><div class="gallery-item-label">山南村 · 田野访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-09-shannan3.png')"><img src="photos/field-09-shannan3.png" alt="山南村"><div class="gallery-item-label">山南村 · 实地调研</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-15-songshan1.JPG')"><img src="photos/field-15-songshan1.JPG" alt="松山村"><div class="gallery-item-label">松山村 · 深度访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-16-songshan2.JPG')"><img src="photos/field-16-songshan2.JPG" alt="松山村"><div class="gallery-item-label">松山村 · 农户走访</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="gallery-item" onclick="openLightbox('photos/field-01-dongxishui1.png')"><img src="photos/field-01-dongxishui1.png" alt="东西水村"><div class="gallery-item-label">东西水村 · 深度访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-02-dongxishui2.png')"><img src="photos/field-02-dongxishui2.png" alt="东西水村"><div class="gallery-item-label">东西水村 · 农户走访</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-03-dongxishui3.jpg')"><img src="photos/field-03-dongxishui3.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 田野纪实</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-04-dongxishui4.jpg')"><img src="photos/field-04-dongxishui4.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 村落风貌</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-05-dongxishui5.jpg')"><img src="photos/field-05-dongxishui5.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 实地调研</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-06-dongxishui6.jpg')"><img src="photos/field-06-dongxishui6.jpg" alt="东西水村"><div class="gallery-item-label">东西水村 · 乡村记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-10-huangtuling1.jpg')"><img src="photos/field-10-huangtuling1.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 调研纪实</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-11-huangtuling2.jpg')"><img src="photos/field-11-huangtuling2.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 田野走访</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-12-huangtuling3.jpg')"><img src="photos/field-12-huangtuling3.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 实地考察</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-13-huangtuling4.jpg')"><img src="photos/field-13-huangtuling4.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 乡村影像</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-14-huangtuling5.jpg')"><img src="photos/field-14-huangtuling5.jpg" alt="黄土岭"><div class="gallery-item-label">黄土岭 · 调研记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-07-shannan1.png')"><img src="photos/field-07-shannan1.png" alt="山南村"><div class="gallery-item-label">山南村 · 访谈记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-08-shannan2.png')"><img src="photos/field-08-shannan2.png" alt="山南村"><div class="gallery-item-label">山南村 · 田野访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-09-shannan3.png')"><img src="photos/field-09-shannan3.png" alt="山南村"><div class="gallery-item-label">山南村 · 实地调研</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-15-songshan1.JPG')"><img src="photos/field-15-songshan1.JPG" alt="松山村"><div class="gallery-item-label">松山村 · 深度访谈</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/field-16-songshan2.JPG')"><img src="photos/field-16-songshan2.JPG" alt="松山村"><div class="gallery-item-label">松山村 · 农户走访</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tour Guide Gallery -->
+    <div class="gallery-section reveal" id="guideGallerySection">
+      <div class="gallery-header">
+        <span class="gallery-title">导游带团影像</span>
+        <div class="gallery-line"></div>
+        <span class="gallery-tag">实践记录 · 带团风采 · 景区讲解 ｜ 鼠标悬停暂停</span>
+      </div>
+      <div class="gallery-scroll" id="guideGallery">
+        <div class="gallery-track" id="guideTrack">
+          <div class="gallery-item" onclick="openLightbox('photos/guide-01.jpg')"><img src="photos/guide-01.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-02.jpg')"><img src="photos/guide-02.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-03.jpg')"><img src="photos/guide-03.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-04.jpg')"><img src="photos/guide-04.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-05.jpg')"><img src="photos/guide-05.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-06.jpg')"><img src="photos/guide-06.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-07.jpg')"><img src="photos/guide-07.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-08.jpg')"><img src="photos/guide-08.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-09.jpg')"><img src="photos/guide-09.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-10.jpg')"><img src="photos/guide-10.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-11.jpg')"><img src="photos/guide-11.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-12.jpg')"><img src="photos/guide-12.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-13.jpg')"><img src="photos/guide-13.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-14.jpg')"><img src="photos/guide-14.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <!-- Duplicate for seamless loop -->
+          <div class="gallery-item" onclick="openLightbox('photos/guide-01.jpg')"><img src="photos/guide-01.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-02.jpg')"><img src="photos/guide-02.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-03.jpg')"><img src="photos/guide-03.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-04.jpg')"><img src="photos/guide-04.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-05.jpg')"><img src="photos/guide-05.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-06.jpg')"><img src="photos/guide-06.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-07.jpg')"><img src="photos/guide-07.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-08.jpg')"><img src="photos/guide-08.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-09.jpg')"><img src="photos/guide-09.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-10.jpg')"><img src="photos/guide-10.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-11.jpg')"><img src="photos/guide-11.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 景区讲解</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-12.jpg')"><img src="photos/guide-12.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 团队合影</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-13.jpg')"><img src="photos/guide-13.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 实践记录</div></div>
+          <div class="gallery-item" onclick="openLightbox('photos/guide-14.jpg')"><img src="photos/guide-14.jpg" alt="带团"><div class="gallery-item-label">导游带团 · 带团风采</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+<section id="plan">
+  <div class="container">
+    <div class="reveal section-label">Future Plan</div>
+    <h2 class="reveal section-title">研究生学习规划</h2>
+    <div class="reveal section-divider"></div>
+    <div class="plan-timeline">
+      <div class="plan-item reveal">
+        <div class="plan-year">大四</div>
+        <div class="plan-desc">提前对接导师，研读文献，将本科毕业论文与课题组研究方向挂钩，围绕乡村旅游文化自信主题先行探索</div>
+      </div>
+      <div class="plan-item reveal reveal-delay-1">
+        <div class="plan-year">研一</div>
+        <div class="plan-desc">夯实理论基础，积极参与科研调研，融入课题组研究体系</div>
+      </div>
+      <div class="plan-item reveal reveal-delay-2">
+        <div class="plan-year">研二</div>
+        <div class="plan-desc">凝练研究方向，撰写学术论文，产出高质量研究成果</div>
+      </div>
+      <div class="plan-item reveal reveal-delay-3">
+        <div class="plan-year">研三</div>
+        <div class="plan-desc">完成学位论文与答辩，为学术生涯奠定坚实基础</div>
+      </div>
+    </div>
+
+    <!-- Research Plan -->
+    <div class="plan-research reveal">
+      <div class="plan-research-cover" onclick="window.open('research-plan.pdf', '_blank')">
+        <img src="research-plan-cover.jpg" alt="科研计划书封面">
+        <div class="plan-research-cover-overlay">点击查看全文</div>
+      </div>
+      <div class="plan-research-info">
+        <span class="plan-research-tag">研究生科研计划书 · 16页</span>
+        <h3 class="plan-research-title">拼装理论下乡村旅游地回流人群文化自信生成机制研究——以阜平县骆驼湾村为例</h3>
+        <div class="plan-research-meta">研究方向：乡村旅游 ｜ 案例地：河北省阜平县骆驼湾村</div>
+        <p class="plan-research-desc">延续本科阶段对骆驼湾村农户生计决策的拼装理论研究脉络，进一步聚焦回流人群文化自信的动态生成机制。引入Deleuze & Guattari拼装理论，剖析多元异质要素在文化认同建构中的互动与转译逻辑，探究居民福祉与国家认同之间的良性互动路径，为红色旅游地文化自信建构提供学理支撑。</p>
+        <a href="research-plan.pdf" target="_blank" class="plan-research-link">
+          <span>&#128279;</span> 在线查看完整计划书
+        </a>
+      </div>
+    </div>
+
+    <!-- Passion & Vision -->
+    <div class="plan-passion reveal">
+      <div class="plan-passion-label">对本专业认知与兴趣</div>
+      <div class="plan-passion-text">
+        <p>了解到《只有河南》《只有红楼梦》这样需要三天才能沉浸完的多剧目项目后，我开始思考：乡村是否也能拥有这样的沉浸式体验？而园屿村发起的"乡村实景游戏"让我兴奋地看到，乡村旅游正处于极其有趣、充满活力的发展前沿。</p>
+        <p>我一直觉得，做研究不能闭门造车。如果不知道行业最实际的现状，做出来的东西永远是落后的。我想做自己真正感兴趣、能解决实际问题的事。<span class="em">站在最前沿去发现真问题、解决真问题</span>，这才是好的研究，也是我学这个专业最核心的动力。</p>
+        <p>因此，我很想去那些发展优秀的乡村亲眼看一看，<span class="em">把论文写在祖国大地上</span>。哪怕看似成功的地方，我也想探寻其背后的未解痛点。我希望未来第一能结合社会与企业的力量，第二能打破专业壁垒，与计算机、美术等专业的同学跨界合作，不做飘在空中的理论，而是做能落地、能改变现状的尝试。用自己的专业能力让乡村发生实实在在的改变，帮助到真实具体的人，这就是我的志向与热爱所在。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal">
+      <h2 class="contact-title">期待与您交流</h2>
+      <p class="contact-subtitle">如有任何问题，欢迎随时联系</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-item-label">PHONE / WECHAT</div>
+          <div class="contact-item-value">18035341941</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">EMAIL</div>
+          <div class="contact-item-value">18035341941@163.com</div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-item-label">UNIVERSITY</div>
+          <div class="contact-item-value">河北大学管理学院</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  张鹏宇 · 河北大学旅游管理 · 2027届 · 保研个人展示
+</footer>
+
+<script>
+// Scroll Progress Bar
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const progress = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = progress + '%';
+});
+
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+});
+
+// Intersection Observer for scroll reveals
+const observerOptions = {
+  threshold: 0.12,
+  rootMargin: '0px 0px -60px 0px'
+};
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Smooth scroll for nav links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      const offset = 70;
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - offset;
+      window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+    }
+  });
+});
+
+// Lightbox for poster
+function openLightbox(src) {
+  const lightbox = document.getElementById('lightbox');
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  lightbox.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  lightbox.classList.remove('active');
+  document.body.style.overflow = '';
+}
+// Close lightbox with Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
+</body>
+</html>

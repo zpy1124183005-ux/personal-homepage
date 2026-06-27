@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>园区数据采集代码 - 在线预览 | 张鹏宇</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/python.min.js"></script>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Noto Sans SC',sans-serif; background:#0d1117; color:#c9d1d9; }
+.header {
+  background:linear-gradient(135deg,#1e3a2f,#2d5a44);
+  padding:2.5rem 2rem;
+  text-align:center;
+  border-bottom:3px solid #c9a961;
+}
+.header-tag { font-size:0.8rem; color:#e0c887; letter-spacing:3px; margin-bottom:0.5rem; }
+.header h1 { font-size:1.5rem; color:#faf7f0; font-weight:500; margin-bottom:0.3rem; }
+.header p { font-size:0.85rem; color:rgba(250,247,240,0.6); }
+.code-meta {
+  display:flex; justify-content:center; gap:2rem; flex-wrap:wrap;
+  margin-top:1.2rem;
+}
+.code-meta-item { text-align:center; }
+.code-meta-num { font-size:1.4rem; color:#e0c887; font-weight:600; }
+.code-meta-label { font-size:0.72rem; color:rgba(250,247,240,0.5); letter-spacing:1px; }
+.code-container {
+  max-width:950px; margin:2rem auto; padding:0 1rem;
+}
+.code-toolbar {
+  display:flex; justify-content:space-between; align-items:center;
+  background:#161b22; padding:0.8rem 1.5rem; border-radius:8px 8px 0 0;
+  border:1px solid #30363d; border-bottom:none;
+}
+.code-filename { font-family:'JetBrains Mono',monospace; font-size:0.85rem; color:#8b949e; }
+.code-lang { font-size:0.72rem; color:#c9a961; padding:0.2rem 0.6rem; border:1px solid rgba(201,169,97,0.3); border-radius:3px; }
+pre {
+  background:#0d1117 !important;
+  border-radius:0 0 8px 8px;
+  border:1px solid #30363d;
+  padding:1.5rem;
+  overflow-x:auto;
+  font-family:'JetBrains Mono',monospace;
+  font-size:0.82rem;
+  line-height:1.7;
+  max-height:70vh;
+}
+pre code { background:transparent !important; }
+.back-link {
+  display:block; text-align:center; padding:2rem;
+  color:#8b949e; text-decoration:none; font-size:0.85rem;
+  transition:color 0.3s;
+}
+.back-link:hover { color:#c9a961; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-tag">PYTHON CODE PREVIEW</div>
+  <h1>京津冀区县园区名录采集系统</h1>
+  <p>运用Python + 高德地图API批量采集京津冀20个区县园区数据</p>
+  <div class="code-meta">
+    <div class="code-meta-item"><div class="code-meta-num">20</div><div class="code-meta-label">覆盖区县</div></div>
+    <div class="code-meta-item"><div class="code-meta-num">8</div><div class="code-meta-label">园区类型</div></div>
+    <div class="code-meta-item"><div class="code-meta-num">356</div><div class="code-meta-label">代码行数</div></div>
+  </div>
+</div>
+
+<div class="code-container">
+  <div class="code-toolbar">
+    <span class="code-filename">park_collector.py</span>
+    <span class="code-lang">Python</span>
+  </div>
+<pre><code class="language-python">import requests
+import pandas as pd
+import json
+import time
+from datetime import datetime
+from typing import List, Dict
+from pathlib import Path
+
+# ==================== 配置区域 ====================
+
+class Config:
+    """高德API配置 - 请确保Key已开启Web服务权限"""
+    AMAP_KEY = "9559621cf2702975d36cdcf95dc3079d"
+    BASE_URL = "https://restapi.amap.com/v3/place/text"
+    SLEEP_TIME = 0.3
+    PAGE_SIZE = 25
+    SEARCH_KEYWORDS = [
+        "工业园", "开发区", "产业园", "高新区",
+        "经济技术开发区", "科技园区", "物流园", "保税区"
+    ]
+
+# ==================== 20个代表性区县 ====================
+
+DISTRICTS = [
+    {'name': '朝阳区', 'adcode': '110105', 'city': '北京市'},
+    {'name': '海淀区', 'adcode': '110108', 'city': '北京市'},
+    {'name': '东城区', 'adcode': '110101', 'city': '北京市'},
+    {'name': '丰台区', 'adcode': '110106', 'city': '北京市'},
+    {'name': '昌平区', 'adcode': '110114', 'city': '北京市'},
+    {'name': '密云区', 'adcode': '110118', 'city': '北京市'},
+    {'name': '和平区', 'adcode': '120101', 'city': '天津市'},
+    {'name': '河西区', 'adcode': '120103', 'city': '天津市'},
+    {'name': '滨海新区', 'adcode': '120116', 'city': '天津市'},
+    {'name': '西青区', 'adcode': '120111', 'city': '天津市'},
+    {'name': '武清区', 'adcode': '120114', 'city': '天津市'},
+    {'name': '蓟州区', 'adcode': '120119', 'city': '天津市'},
+    {'name': '长安区(石家庄)', 'adcode': '130102', 'city': '石家庄市'},
+    {'name': '曹妃甸区', 'adcode': '130209', 'city': '唐山市'},
+    {'name': '莲池区', 'adcode': '130606', 'city': '保定市'},
+    {'name': '广阳区', 'adcode': '131003', 'city': '廊坊市'},
+    {'name': '新华区(沧州)', 'adcode': '130902', 'city': '沧州市'},
+    {'name': '桥西区(张家口)', 'adcode': '130703', 'city': '张家口市'},
+    {'name': '海港区', 'adcode': '130302', 'city': '秦皇岛市'},
+    {'name': '容城县', 'adcode': '130629', 'city': '雄安新区'}
+]
+
+# ==================== 园区数据采集器 ====================
+
+class IndustrialParkCollector:
+    """使用高德POI搜索采集园区数据"""
+
+    def __init__(self, api_key: str):
+        self.api_key = api_key
+        self.session = requests.Session()
+        self.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+        })
+        self.results_cache = {}
+
+    def _make_request(self, params: dict) -> dict:
+        """发送API请求，含错误处理"""
+        try:
+            params['key'] = self.api_key
+            response = self.session.get(Config.BASE_URL, params=params, timeout=10)
+            time.sleep(Config.SLEEP_TIME)
+
+            if response.status_code == 200:
+                data = response.json()
+                if data.get('status') == '1':
+                    return {'success': True, 'data': data}
+                else:
+                    error_info = data.get('info', '未知错误')
+                    infocode = data.get('infocode', '')
+                    if 'USERKEY_PLAT_NOMATCH' in error_info:
+                        return {
+                            'success': False,
+                            'error': 'USERKEY_PLAT_NOMATCH: Key平台不匹配',
+                            'solution': '请检查：1.控制台开启"Web服务API" 2.取消Referer限制 3.添加IP白名单'}
+                    elif 'USERKEY' in error_info:
+                        return {
+                            'success': False,
+                            'error': f'{error_info} (代码:{infocode})',
+                            'solution': 'Key无效或权限不足，请检查Key状态'
+                        }
+                    else:
+                        return {'success': False, 'error': f'{error_info} (代码:{infocode})'}
+            else:
+                return {'success': False, 'error': f'HTTP {response.status_code}'}
+
+        except Exception as e:
+            return {'success': False, 'error': str(e)}
+
+    def search_parks_in_district(self, district_adcode: str, district_name: str) -> List[Dict]:
+        """在指定区县搜索所有类型的园区"""
+        all_parks = []
+        seen_names = set()
+
+        print(f"\n正在搜索: {district_name} (adcode: {district_adcode})")
+
+        for keyword in Config.SEARCH_KEYWORDS:
+            page = 1
+            while page <= 10:
+                params = {
+                    'keywords': keyword,
+                    'city': district_adcode,
+                    'citylimit': 'true',
+                    'offset': Config.PAGE_SIZE,
+                    'page': str(page),
+                    'extensions': 'all'
+                }
+
+                result = self._make_request(params)
+
+                if not result['success']:
+                    print(f"  ✗ 关键词'{keyword}'第{page}页失败: {result['error']}")
+                    break
+
+                pois = result['data'].get('pois', [])
+                if not pois:
+                    break
+
+                for poi in pois:
+                    name = poi.get('name', '')
+                    if name in seen_names:
+                        continue
+                    if not self._is_valid_park(name, poi.get('type', '')):
+                        continue
+                    seen_names.add(name)
+
+                    park_info = {
+                        '园区名称': name,
+                        '所属区县': district_name,
+                        'adcode': district_adcode,
+                        '所属城市': next((d['city'] for d in DISTRICTS if d['adcode'] == district_adcode), ''),
+                        '详细地址': poi.get('address', ''),
+                        '经度': poi.get('location', '').split(',')[0] if ',' in poi.get('location', '') else '',
+                        '纬度': poi.get('location', '').split(',')[1] if ',' in poi.get('location', '') else '',
+                        'POI类型': poi.get('type', ''),
+                        '电话': poi.get('tel', ''),
+                        '搜索关键词': keyword,
+                        '数据获取时间': datetime.now().strftime('%Y-%m-%d')
+                    }
+                    all_parks.append(park_info)
+
+                if len(pois) < Config.PAGE_SIZE:
+                    break
+                page += 1
+
+        return all_parks
+
+    def _is_valid_park(self, name: str, poi_type: str) -> bool:
+        """过滤有效的园区POI，排除居民小区等误匹配"""
+        valid_keywords = ['园', '区', '开发', '产业', '工业', '科技', '物流', '保税', '经济']
+        if not any(k in name for k in valid_keywords):
+            return False
+        exclude_keywords = ['小区', '住宅', '公寓', '花园', '家园', '商业', '购物', '中心']
+        if any(k in name for k in exclude_keywords):
+            if '商业' in name and '园' not in name:
+                return False
+        return True
+
+# ==================== 数据清洗与导出 ====================
+
+def clean_and_export(data: List[Dict], filename: str):
+    """清洗数据并导出Excel"""
+    if not data:
+        print("警告: 未获取到任何数据")
+        return
+
+    df = pd.DataFrame(data)
+    for col in df.columns:
+        df[col] = df[col].apply(lambda x: str(x) if x is not None else '')
+
+    # 去重
+    df = df.drop_duplicates(subset=['园区名称', '详细地址'], keep='first')
+
+    # 分类标记
+    def classify_park_type(name):
+        if '高新技术' in name or '高新' in name or '科技' in name:
+            return '高新区'
+        elif '经济技术' in name or '经开' in name:
+            return '经开区'
+        elif '保税' in name:
+            return '保税区'
+        elif '物流' in name:
+            return '物流园'
+        elif '产业园' in name:
+            return '产业园'
+        elif '工业园' in name:
+            return '工业园'
+        else:
+            return '其他园区'
+
+    df['园区类型'] = df['园区名称'].apply(classify_park_type)
+    stats = df.groupby('所属区县').size().reset_index(name='园区数量')
+
+    # 导出Excel（多Sheet）
+    with pd.ExcelWriter(filename, engine='openpyxl') as writer:
+        df.to_excel(writer, sheet_name='园区名录详情', index=False)
+        stats.to_excel(writer, sheet_name='区县统计', index=False)
+        type_stats = df['园区类型'].value_counts().reset_index()
+        type_stats.columns = ['园区类型', '数量']
+        type_stats.to_excel(writer, sheet_name='类型统计', index=False)
+
+    print(f"\n✓ 数据已保存至: {filename}")
+    print(f"  共获取 {len(df)} 个园区")
+    print(f"  覆盖 {len(stats)} 个区县")
+
+def main():
+    print("=" * 70)
+    print("京津冀区县园区名录采集（第12项）- 高德POI版")
+    print(f"执行时间: {datetime.now().strftime('%Y-%m-%d %H:%M')}")
+    print("=" * 70)
+
+    collector = IndustrialParkCollector(Config.AMAP_KEY)
+
+    if not collector.test_api_connection():
+        print("\nAPI测试失败，请检查Key配置后重试")
+        return
+
+    all_results = []
+    print(f"\n开始采集 {len(DISTRICTS)} 个区县的园区数据...")
+
+    for idx, district in enumerate(DISTRICTS, 1):
+        print(f"\n[{idx}/{len(DISTRICTS)}] ", end="")
+        parks = collector.search_parks_in_district(district['adcode'], district['name'])
+        all_results.extend(parks)
+        print(f"  当前区县累计: {len(parks)} 个园区")
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+    filename = f"京津冀园区名录_第12项_{timestamp}.xlsx"
+    clean_and_export(all_results, filename)
+
+if __name__ == "__main__":
+    main()</code></pre>
+</div>
+
+<a href="index.html#works" class="back-link">&#8592; 返回个人展示页</a>
+
+<script>hljs.highlightAll();</script>
+</body>
+</html>
