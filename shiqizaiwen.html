@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>時器載文 · 汉字演变文化设计 | 张鹏宇</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-deep: #1e3a2f;
+  --green: #2d5a44;
+  --green-light: #5a8a6e;
+  --sage: #8baa96;
+  --gold: #c9a961;
+  --gold-light: #e0c887;
+  --cream: #faf7f0;
+  --cream-dark: #f0ebe0;
+  --charcoal: #1a1a1a;
+  --gray: #5a5a5a;
+  --gray-light: #9a9a9a;
+  --white: #ffffff;
+  --serif: 'Noto Serif SC', 'Cormorant Garamond', serif;
+  --sans: 'Noto Sans SC', sans-serif;
+  --max-width: 1100px;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--charcoal);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Nav */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 999;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 247, 240, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--cream-dark);
+}
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--green-deep);
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+.nav-back:hover { color: var(--gold); }
+.nav-title {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  letter-spacing: 2px;
+}
+
+/* Hero */
+.project-hero {
+  padding: 8rem 2rem 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, var(--cream-dark) 0%, var(--cream) 100%);
+}
+.project-hero-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  padding: 0.25rem 1rem;
+  background: var(--green-deep);
+  color: var(--gold-light);
+  border-radius: 3px;
+  letter-spacing: 2px;
+  margin-bottom: 1.5rem;
+}
+.project-hero h1 {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  letter-spacing: 4px;
+  margin-bottom: 0.8rem;
+}
+.project-hero-en {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--sage);
+  letter-spacing: 3px;
+  margin-bottom: 1.5rem;
+}
+.project-hero-desc {
+  max-width: 640px;
+  margin: 0 auto;
+  font-size: 0.92rem;
+  color: var(--gray);
+  line-height: 1.9;
+}
+
+/* Section */
+.project-section {
+  padding: 4rem 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+.section-label {
+  font-size: 0.72rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+  font-weight: 500;
+}
+.section-title {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--green-deep);
+  margin-bottom: 0.5rem;
+}
+.section-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+  margin-bottom: 1.5rem;
+}
+.section-intro {
+  font-size: 0.9rem;
+  color: var(--gray);
+  line-height: 1.8;
+  max-width: 680px;
+  margin-bottom: 2rem;
+}
+
+/* Timeline */
+.timeline-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  position: relative;
+}
+.timeline-track::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 10%;
+  right: 10%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), var(--green-light), var(--gold));
+  z-index: 0;
+}
+.timeline-node {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 3px solid var(--gold);
+  margin: 13px auto 1rem;
+}
+.timeline-date {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--green-deep);
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+.timeline-name {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--green-deep);
+  margin: 0.2rem 0 0.3rem;
+}
+.timeline-desc {
+  font-size: 0.75rem;
+  color: var(--gray);
+  line-height: 1.6;
+  padding: 0 0.5rem;
+}
+
+/* Poster Gallery */
+.poster-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.poster-card {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(30,58,47,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.poster-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px rgba(30,58,47,0.18);
+}
+.poster-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+.poster-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem;
+  background: linear-gradient(transparent, rgba(30,58,47,0.92));
+}
+.poster-overlay .era {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  letter-spacing: 2px;
+  margin-bottom: 0.3rem;
+}
+.poster-overlay .ptitle {
+  font-family: var(--serif);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+}
+.poster-overlay .psub {
+  font-size: 0.72rem;
+  color: var(--sage);
+  margin-top: 0.2rem;
+}
+
+/* Videos */
+.video-main {
+  margin: 2rem 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 15px 50px rgba(30,58,47,0.12);
+  background: var(--white);
+}
+.video-main video {
+  width: 100%;
+  display: block;
+  max-height: 560px;
+  background: #000;
+}
+.video-main-label {
+  padding: 1rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid var(--cream-dark);
+}
+.video-main-label .vnum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.video-main-label .vname {
+  font-family: var(--serif);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--green-deep);
+}
+.video-main-label .vera {
+  font-size: 0.72rem;
+  color: var(--gray-light);
+  margin-left: auto;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+.video-card {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 8px 30px rgba(30,58,47,0.1);
+  background: var(--white);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.video-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(30,58,47,0.15);
+}
+.video-card video {
+  width: 100%;
+  display: block;
+  background: #000;
+}
+.video-card-label {
+  padding: 0.8rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.video-card-label .vnum {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 600;
+}
+.video-card-label .vname {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--green-deep);
+}
+.video-card-label .vera {
+  font-size: 0.7rem;
+  color: var(--gray-light);
+  margin-left: auto;
+}
+
+/* Products */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-top: 2rem;
+}
+.product-card {
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--white);
+  box-shadow: 0 6px 24px rgba(30,58,47,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 36px rgba(30,58,47,0.14);
+}
+.product-card img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.product-name {
+  padding: 0.8rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--cream-dark);
+}
+.product-name .pname {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--green-deep);
+}
+.product-name .pen {
+  font-size: 0.7rem;
+  color: var(--gray-light);
+  letter-spacing: 1px;
+}
+
+/* Lightbox */
+.lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0,0,0,0.92);
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  cursor: zoom-out;
+}
+.lightbox.active { display: flex; }
+.lightbox img {
+  max-width: 95%;
+  max-height: 92vh;
+  border-radius: 4px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  color: rgba(255,255,255,0.7);
+  font-size: 2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  z-index: 2001;
+}
+.lightbox-close:hover { color: var(--gold-light); }
+
+/* Footer */
+.project-footer {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-top: 1px solid var(--cream-dark);
+  margin-top: 2rem;
+}
+.project-footer h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: var(--green-deep);
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+}
+.project-footer p {
+  font-size: 0.78rem;
+  color: var(--gray-light);
+  line-height: 1.8;
+}
+.back-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.6rem 1.5rem;
+  background: var(--green-deep);
+  color: var(--gold-light);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  border-radius: 3px;
+  transition: background 0.3s, transform 0.3s;
+}
+.back-btn:hover {
+  background: var(--green);
+  transform: translateY(-2px);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.15s; }
+.reveal-delay-2 { transition-delay: 0.3s; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-hero h1 { font-size: 2rem; letter-spacing: 2px; }
+  .project-hero-en { font-size: 0.9rem; }
+  .timeline-track { grid-template-columns: repeat(2, 1fr); gap: 1.5rem 1rem; }
+  .timeline-track::before { display: none; }
+  .poster-grid { grid-template-columns: 1fr; }
+  .video-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .nav-title { display: none; }
+}
+@media (max-width: 480px) {
+  .products-grid { grid-template-columns: 1fr; }
+  .section-title { font-size: 1.4rem; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html#works" class="nav-back">← 返回主页</a>
+  <div class="nav-title">時器載文</div>
+  <div style="width:60px"></div>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-hero-tag">VISUAL DESIGN · 视觉设计</div>
+  <h1>時器載文</h1>
+  <div class="project-hero-en">CHARACTERS THROUGH TIME</div>
+  <p class="project-hero-desc">
+    以汉字演变为主题的文化设计系列作品。从甲骨文的契刻之始，到金文的铸铭之承，
+    再到隶书的简牍之载，最终走向宋体的字貫東西——跨越三千五百年，
+    以现代设计语言重述汉字的时光之旅。
+  </p>
+</div>
+
+<!-- TIMELINE -->
+<div class="project-section reveal">
+  <div class="section-label">Evolution</div>
+  <h2 class="section-title">文字演变</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">
+    选取汉字发展史上四个标志性阶段，以时间为轴，展现从象形到符号、从契刻到印刷的演变脉络。
+  </p>
+  <div class="timeline-track">
+    <div class="timeline-node">
+      <div class="timeline-date">BC.14C</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-name">甲骨文</div>
+      <div class="timeline-desc">商代占卜刻辞<br>契于龟甲兽骨</div>
+    </div>
+    <div class="timeline-node">
+      <div class="timeline-date">BC.09C</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-name">金文</div>
+      <div class="timeline-desc">西周青铜礼器<br>铸铭永传</div>
+    </div>
+    <div class="timeline-node">
+      <div class="timeline-date">AD.02C</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-name">隶书</div>
+      <div class="timeline-desc">汉简笔意流转<br>由篆入隶</div>
+    </div>
+    <div class="timeline-node">
+      <div class="timeline-date">AD.21C</div>
+      <div class="timeline-dot"></div>
+      <div class="timeline-name">宋体</div>
+      <div class="timeline-desc">活字印刷规范<br>字贯东西</div>
+    </div>
+  </div>
+</div>
+
+<!-- POSTERS -->
+<div class="project-section reveal">
+  <div class="section-label">Poster Series</div>
+  <h2 class="section-title">系列海报</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">
+    四幅系列海报，对应四个时代的文字载体与精神内核。点击可放大查看。
+  </p>
+  <div class="poster-grid">
+    <div class="poster-card" onclick="openLightbox('shiqizaiwen/work_01.jpg')">
+      <img src="shiqizaiwen/work_01.jpg" alt="时器载文 - 甲骨文">
+      <div class="poster-overlay">
+        <div class="era">BC.14C · 契刻之始</div>
+        <div class="ptitle">時器載文</div>
+        <div class="psub">甲骨为载 · 刻辞为文</div>
+      </div>
+    </div>
+    <div class="poster-card" onclick="openLightbox('shiqizaiwen/work_02.jpg')">
+      <img src="shiqizaiwen/work_02.jpg" alt="笔墨春秋 - 隶书">
+      <div class="poster-overlay">
+        <div class="era">AD.02C · 简牍之载</div>
+        <div class="ptitle">筆墨春秋</div>
+        <div class="psub">竹简墨书 · 笔意流转</div>
+      </div>
+    </div>
+    <div class="poster-card" onclick="openLightbox('shiqizaiwen/work_03.jpg')">
+      <img src="shiqizaiwen/work_03.jpg" alt="字贯东西 - 宋体">
+      <div class="poster-overlay">
+        <div class="era">AD.21C · 字貫東西</div>
+        <div class="ptitle">字貫東西</div>
+        <div class="psub">活字印刷 · 文明对话</div>
+      </div>
+    </div>
+    <div class="poster-card" onclick="openLightbox('shiqizaiwen/work_04.jpg')">
+      <img src="shiqizaiwen/work_04.jpg" alt="作品四">
+      <div class="poster-overlay">
+        <div class="era">BC.09C · 铸铭之承</div>
+        <div class="ptitle">金文承器</div>
+        <div class="psub">青铜礼器 · 铭文永传</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIDEOS -->
+<div class="project-section reveal">
+  <div class="section-label">Motion Design</div>
+  <h2 class="section-title">字体演绎</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">
+    动态呈现四种书体的演变过程与设计理念，搭配操作演示视频，完整展示作品全貌。
+  </p>
+
+  <div class="video-main">
+    <video controls preload="metadata" poster="shiqizaiwen/work_01.jpg">
+      <source src="shiqizaiwen/demo.mp4" type="video/mp4">
+    </video>
+    <div class="video-main-label">
+      <span class="vnum">DEMO</span>
+      <span class="vname">時器載文 · 操作演示</span>
+      <span class="vera">完整展示</span>
+    </div>
+  </div>
+
+  <div class="video-grid">
+    <div class="video-card">
+      <video controls preload="metadata" poster="shiqizaiwen/work_01.jpg">
+        <source src="shiqizaiwen/oracle_bone.mp4" type="video/mp4">
+      </video>
+      <div class="video-card-label">
+        <span class="vnum">01</span>
+        <span class="vname">甲骨文 · 契刻之始</span>
+        <span class="vera">BC.14C</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <video controls preload="metadata" poster="shiqizaiwen/work_04.jpg">
+        <source src="shiqizaiwen/bronze.mp4" type="video/mp4">
+      </video>
+      <div class="video-card-label">
+        <span class="vnum">02</span>
+        <span class="vname">金文 · 铸铭之承</span>
+        <span class="vera">BC.09C</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <video controls preload="metadata" poster="shiqizaiwen/work_02.jpg">
+        <source src="shiqizaiwen/clerical.mp4" type="video/mp4">
+      </video>
+      <div class="video-card-label">
+        <span class="vnum">03</span>
+        <span class="vname">隶书 · 简牍之载</span>
+        <span class="vera">AD.02C</span>
+      </div>
+    </div>
+    <div class="video-card">
+      <video controls preload="metadata" poster="shiqizaiwen/work_03.jpg">
+        <source src="shiqizaiwen/song.mp4" type="video/mp4">
+      </video>
+      <div class="video-card-label">
+        <span class="vnum">04</span>
+        <span class="vname">宋体 · 字贯东西</span>
+        <span class="vera">AD.21C</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS -->
+<div class="project-section reveal">
+  <div class="section-label">Cultural Creative</div>
+  <h2 class="section-title">文创衍生</h2>
+  <div class="section-divider"></div>
+  <p class="section-intro">
+    将汉字演变主题延伸至日常生活，五款文创产品让文化走出博物馆，融入日常。
+  </p>
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="shiqizaiwen/product_postcard.jpg" alt="明信片">
+      <div class="product-name">
+        <span class="pname">系列明信片</span>
+        <span class="pen">POSTCARD</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="shiqizaiwen/product_bag.jpg" alt="帆布包">
+      <div class="product-name">
+        <span class="pname">主题帆布包</span>
+        <span class="pen">CANVAS BAG</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="shiqizaiwen/product_fan.jpg" alt="团扇">
+      <div class="product-name">
+        <span class="pname">文创团扇</span>
+        <span class="pen">FAN</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="shiqizaiwen/product_calendar.jpg" alt="日历">
+      <div class="product-name">
+        <span class="pname">主题日历</span>
+        <span class="pen">CALENDAR</span>
+      </div>
+    </div>
+    <div class="product-card">
+      <img src="shiqizaiwen/product_notebook.jpg" alt="记事本">
+      <div class="product-name">
+        <span class="pname">文创记事本</span>
+        <span class="pen">NOTEBOOK</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="放大查看">
+</div>
+
+<!-- Footer -->
+<div class="project-footer">
+  <h3>時器載文</h3>
+  <p>CHARACTERS THROUGH TIME · BC.14 → AD.21<br>汉字演变文化设计系列 · 张鹏宇作品</p>
+  <a href="index.html#works" class="back-btn">返回主页 →</a>
+</div>
+
+<script>
+// Lightbox
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
